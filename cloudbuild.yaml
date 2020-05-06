@@ -1,10 +1,9 @@
 # [START cloudbuild]
-steps:
- - name: maven:3-jdk-8
-   entrypoint: mvn
-   args: 
-   - 'install'
-   - '-Dmaven.test.skip=true'
+- name: maven:3-jdk-8
+  entrypoint: mvn
+  args: 
+  - 'install'
+  - '-Dmaven.test.skip=true'
 
 # This step builds the container image.
 - name: 'gcr.io/cloud-builders/docker'
