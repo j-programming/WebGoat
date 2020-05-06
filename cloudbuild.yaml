@@ -11,6 +11,7 @@ steps:
 # This step builds the container image.
 - name: 'gcr.io/cloud-builders/docker'
   id: Build
+  dir: 'webgoat-server'
   args:
   - 'build'
   - '-t'
@@ -22,6 +23,7 @@ steps:
 # replaced by Cloud Build.
 - name: 'gcr.io/cloud-builders/docker'
   id: Push
+  dir: 'webgoat-server'
   args:
   - 'push'
   - 'gcr.io/$PROJECT_ID/hello-webgoat:$SHORT_SHA'
