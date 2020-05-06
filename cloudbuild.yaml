@@ -33,10 +33,16 @@ steps:
   entrypoint: /bin/sh
   args:
   - '-c'
-  - |
-     sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" kubernetes.yaml | \
-     sed "s/COMMIT_SHA/${SHORT_SHA}/g" > kubernetes.yaml
+  - 'sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" kubernetes.yaml'
 
+# This step generates the new manifest
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: Generate manifest2
+  entrypoint: /bin/sh
+  args:
+  - '-c'
+  - 'sed "s/COMMIT_SHA/${SHORT_SHA}/g" > kubernetes.yaml'
+     
 # This step deploys the new version of our container image
 # in the hello-cloudbuild Kubernetes Engine cluster.
 - name: 'gcr.io/cloud-builders/kubectl'
