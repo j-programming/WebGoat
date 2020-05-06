@@ -3,8 +3,9 @@ steps:
 - name: 'gcr.io/cloud-builders/mvn'
   id: MVN
   args:
+  - 'clean'
   - 'install'
-  - '-Dmaven.test.skip=true'
+  - '-DskipTests'
 
 # This step builds the container image.
 - name: 'gcr.io/cloud-builders/docker'
