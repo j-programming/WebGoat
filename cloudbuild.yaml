@@ -1,7 +1,8 @@
 # [START cloudbuild]
+steps:
 - name: 'gcr.io/cloud-builders/mvn'
   id: MVN
-  args: 
+  args:
   - 'install'
   - '-Dmaven.test.skip=true'
 
