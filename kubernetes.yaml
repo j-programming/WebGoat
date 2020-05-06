@@ -29,9 +29,6 @@ spec:
     app: hello-webgoat
   ports:
   - protocol: TCP
-    port: 80
+    port: 404
     targetPort: 8080
-  - protocol: TCP
-    port: 9090
-    targetPort: 9090
   type: LoadBalancer
