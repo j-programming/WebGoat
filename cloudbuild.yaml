@@ -1,12 +1,8 @@
 # [START cloudbuild]
 steps:
-# This step runs the unit tests on the app
-- name: 'mvn prepare'
-  id: Test
-  entrypoint: /bin/sh
-  args:
-  - -c
-  - 'mvn install -DskipTests'
+ - name: maven:3-jdk-8
+   entrypoint: mvn
+   args: ['install','-Dmaven.test.skip=true']
 
 # This step builds the container image.
 - name: 'gcr.io/cloud-builders/docker'
